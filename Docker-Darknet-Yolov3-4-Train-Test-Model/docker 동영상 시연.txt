@@ -1,0 +1,46 @@
+1. zip 파일 압축 풀기
+
+2. 도커 이미지 로드
+docker load -i docker-darknet_yolo.tar
+
+3. 도커 실행(컨테이너)
+docker run --rm -it --ipc=host --net=host --gpus all --shm-size=8gb -v  D:\docker-darknet-yolov3-yolov4-training-test
+
+4. 도커 컨테이너 ID 복사
+
+5. 도커 일시정지 후 프롬프트로 복귀
+ctrl+p+q
+
+6. 데이터셋 복사
+docker cp D:\docker-darknet-yolov3-yolov4-training-test\construction_final 6eaa795c5ab7:darknet/ 
+
+7. 웨이트값(pth) 복사
+docker cp work_dirs <컨테이너 ID>:/docker-darknet_yolo/
+
+8. 설정파일 복사
+docker cp configs <컨테이너 ID>:/docker-darknet_yolo/
+
+9. 도커 컨테이너 복귀
+docker exec -it 6eaa795c5ab7 /bin/bash
+
+10. Docker Darknet Yolo 모델 설정파일 복사
+cd ..
+cp -r docker-darknet_yolo/
+cd docker-darknet_yolo
+
+11. 모델 트레이닝
+(gpu 1개) 
+docker run -it --gpus all docker-darknet_yolo:latest ./darknet detector train ./construction_final.data ./data/construction_final.cfg yolov4.weights -map -dont_show -clear
+
+
+12. 학습된 모델 활용 testset 결과 확인
+(mAP 산출) docker run -it --gpus all docker-darknet_yolo:latest ./darknet detector test construction_final.data construction_final.cfg construction_final_best.weights data/person.jpg -dont_show
+
+(mAP 산출) docker run -it --gpus all docker-darknet_yolo:latest ./darknet detector valid ./data/obj.data ./data/yolo-obj.cfg yolov4.weights
+
+(mAP Evaluation results) docker run -it --gpus all docker-darknet_yolo:latest ./darknet detector map construction_final.data construction_final.cfg construction_final_best.weights
+
+
+
+
+
