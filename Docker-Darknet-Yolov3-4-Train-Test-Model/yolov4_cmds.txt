@@ -1,0 +1,78 @@
+https://github.com/hanifalisohag/docker-darknet-yolov3-yolov4-training-test/tree/main
+
+
+
+
+file path: /home/than/docker-darknet-yolov3-yolov4-training-test
+
+$ docker build -t docker-darknet_yolo:latest .
+
+$ docker run -it --gpus all docker-darknet_yolo:latest
+
+./darknet detector train ./data/obj.data ./data/yolo-obj.cfg yolov4.weights -map -dont_show -clear
+
+$  data/dog.jpg -dont_show
+
+
+./darknet detector test construction_final.data construction_final.cfg construction_final_best.weights data/person.jpg -dont_show
+
+./darknet detector valid construction_final.data construction_final.cfg construction_final_best.weights
+
+./darknet detector valid ./data/obj.data ./data/yolo-obj.cfg yolov4.weights
+
+./darknet detector map ./data/obj.data ./data/yolo-obj.cfg yolov4.weights
+
+./darknet detector map construction_final.data construction_final.cfg construction_final_best.weights
+
+
+$ git clone https://github.com/hanifalisohag/docker-darknet-yolov3-yolov4-training-test.git
+
+$ cd dataset
+$ python train_test_split.py
+OR
+$ python3 train_test_split.py
+
+$ docker run -it --gpus all --name darknet_training -d\
+  -v '$(PWD)/dataset/data/obj:/darknet/data/obj' \
+  -v '$(PWD)/dataset/data/val.txt:/darknet/data/val.txt' \
+  -v '$(PWD)/dataset/data/train.txt:/darknet/data/train.txt' \
+  -v '$(PWD)/dataset/data/yolo-obj.names:/darknet/data/yolo-obj.names' \
+  -v '$(PWD)/dataset/obj.data:/darknet/obj.data' \
+  -v '$(PWD)/dataset/yolo-obj.cfg:/darknet/yolo-obj.cfg' \
+  -v '$(PWD)/dataset/backup:/darknet/backup' \
+  docker-darknet_yolo:latest ./darknet detector train obj.data yolo-obj.cfg yolov4.conv.137 -map -dont_show
+  
+
+
+./darknet detector train obj.data yolo-obj.cfg yolov4.conv.137 -map -dont_show
+
+
+$docker attach --detach-keys="ctrl-a,x" darknet_training
+
+$ docker ps -a
+$ docker start 6eaa795c5ab7
+$ docker exec -it 6eaa795c5ab7 /bin/bash
+$ docker rm -f 6eaa795c5ab7
+
+docker cp 79b345831282:/darknet/predictions.jpg ~/predictions.jpg
+
+
+Calculate precision,recall and f1-score.
+
+
+Docker container (6eaa795c5ab7:/darknet) 
+
+
+docker cp D:\docker-darknet-yolov3-yolov4-training-test\construction_final 6eaa795c5ab7:darknet/ (Copy data from windows terminal to docker container)
+
+docker save docker-darknet_yolo > docker-darknet_yolo.tar
+
+docker save docker-darknet_yolo > docker-darknet_yolo.tar
+
+>docker save -o docker-darknet_yolo.tar docker-darknet_yolo:latest
+
+docker images --digests
+
+docker pull nextcloud@sha256:c19beadca36fb6d059c35a58cfddbd7de41f7bc5e508693958578f65c553ed81
+
+docker save nextcloud@sha256:c19beadca36fb6d059c35a58cfddbd7de41f7bc5e508693958578f65c553ed81 > nextcloud-app-20200211.tar
