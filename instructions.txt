@@ -1,0 +1,30 @@
+# load docker file
+docker load -i simple_hrnet.tar
+
+# export path 
+docker run simple_hrnet export PYTHONPATH="/simple-HRNet/misc/nms:$PYTHONPATH"
+
+
+# extract keypoint 
+docker run -t -v <path/to/video/file>:/data -v <path/to/where/you/want/to/save/output/file>:/simple-HRNet/output simple_hrnet python3 scripts/extract-keypoints.py --format csv --filename /data/<file_name> --csv_output_filename output/output.csv
+
+# for help
+docker run -t python3 scripts/extract-keypoints.py --help
+
+
+
+## Training only ##
+
+# run docker 
+docker run -it <image_name>
+
+#copy container name 
+
+# import datasets(for training only)
+docker cp <host/dataset/path> <container_id>:/simle-HRNet/datasets/COCO
+
+# training 
+docker exec -it <container_id> python3 scripts/train_coco.py
+
+# for help
+docker exec -it <container_id> python3 scripts/train_coco.py --help
