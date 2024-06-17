@@ -2,8 +2,8 @@
 import cv2
 import os
 
-video_folder = "E:/total_dataset\Sibtain\data/"
-output_folder = "E:/total_dataset\Sibtain\data/"
+video_folder = "..\..\data/"
+output_folder = "..\..\data/"
 
 # video_files = [f for f in os.listdir(video_folder) if f.endswith(('.mp4', '.avi', '.mkv'))]
 
@@ -39,8 +39,8 @@ output_folder = "E:/total_dataset\Sibtain\data/"
 
 #     cap.release()
 #     cv2.destroyAllWindows() 
-# print("작업 완료")
-# 5 프레임 1
+# print ("Work Done")
+# 5 Frame 1
 # video_files = [f for f in os.listdir(video_folder) if f.endswith(('.mp4', '.avi', '.mkv'))]
 
 # for video_file in video_files:
@@ -77,10 +77,10 @@ output_folder = "E:/total_dataset\Sibtain\data/"
 #     cap.release()
 #     cv2.destroyAllWindows() 
 
-# print("작업 완료")
+# print ("Work Done")
 
 
-# 2 초당 1 이미지 
+# 2 images per second
 desired_fps = 1  # 1 / 2 = 0.5
 
 video_files = [f for f in os.listdir(video_folder) if f.endswith(('.mp4', '.avi', '.mkv'))]
@@ -101,7 +101,7 @@ for video_file in video_files:
     frame_count = 1
     image_count = 1
 
-    fps = int(cap.get(cv2.CAP_PROP_FPS))  # 비디오의 프레임 속도 가져오기
+    fps = int(cap.get(cv2.CAP_PROP_FPS)) # Get the frame rate of the video
 
     while True:
         ret, frame = cap.read()
@@ -120,5 +120,4 @@ for video_file in video_files:
 
     cap.release()
     cv2.destroyAllWindows()
-
-print("작업 완료")
+print ("Work Done")
