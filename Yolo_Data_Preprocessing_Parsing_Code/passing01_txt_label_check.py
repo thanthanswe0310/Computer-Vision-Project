@@ -28,7 +28,7 @@ if not os.path.exists(destination_folder):
     os.makedirs(destination_folder)
 
 if matching_files:
-    print(f"label이 {label_to_find}인 파일들을 {destination_folder}saveing..")
+    print(f"label이 {label_to_find}The in-file {destination_folder}saveing..")
     for source_file in matching_files:
         filename = os.path.basename(source_file)
         destination_file = os.path.join(destination_folder, filename)
