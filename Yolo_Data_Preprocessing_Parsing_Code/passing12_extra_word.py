@@ -8,7 +8,7 @@ def remove_suffix_and_extra(file_name, suffix):
     else:
         return file_name
 
-folder_path = 'F:/total_dataset\data_20230918/thanthan\coco120/valid/test/'
+folder_path = '..\coco120/valid/test/'
 
 suffix_to_remove = "_jpg"
 file_names = os.listdir(folder_path)
@@ -27,32 +27,32 @@ print("done")
 # import os
 
 # def remove_suffix_and_extra(file_name):
-#     # 파일 이름에서 마지막 "_"를 찾음
+#    # Find the last "_" in the file name
 #     last_underscore_index = file_name.rfind("_")
     
-#     # 확장자 포함 "_" 이후의 문자열을 제거
+#    # Remove string after "_" with extension
 #     if last_underscore_index != -1:
 #         cleaned_name = file_name[:last_underscore_index]
 #         return cleaned_name
 #     else:
-#         # "_"가 없는 파일 이름은 그대로 유지
+#        # Keep file names that don't have "_"
 #         return file_name
 
-# # 폴더 경로 설정
+# # Set folder path
 # folder_path = 'F:/total_dataset\data_20230918/thanthan\coco120/valid/test/'
 
-# # 폴더 내의 모든 파일 목록 가져오기
+# # Get a list of all files within a folder
 # file_names = os.listdir(folder_path)
 
-# # 각 파일 이름 수정 및 이동
+# # Modify and move each file name
 # for old_name in file_names:
-#     # 수정된 파일 이름 생성
+#    # Create a Revised File Name
 #     new_name = remove_suffix_and_extra(old_name)
     
-#     # 새 파일 이름으로 파일 이동
+#    # Move files to new file name
 #     old_path = os.path.join(folder_path, old_name)
 #     new_path = os.path.join(folder_path, new_name)
     
 #     os.rename(old_path, new_path)
 
-# print("파일 이름 수정이 완료되었습니다.")
+# print ("File name modification completed.")
