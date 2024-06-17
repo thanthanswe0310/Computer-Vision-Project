@@ -1,6 +1,6 @@
 import os
 import shutil
-label_dir = 'F:/coco128_last/val2017\labels/'
+label_dir = '../../val2017\labels/'
 
 # Iterate through label files
 for filename in os.listdir(label_dir):
