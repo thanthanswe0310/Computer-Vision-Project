@@ -2,8 +2,8 @@ import os
 import shutil
 
 
-source_folder = "G:/yolov7/coco128/train2017/labels/"  
-destination_folder = "G:/Dataset share/Parsing_code/passing_val/"  
+source_folder = "../../coco128/train2017/labels/"  
+destination_folder = "../../Parsing_code/passing_val/"  
 
 def find_files_with_label(label, folder_path):
     matching_files = []
