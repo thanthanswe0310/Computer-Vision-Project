@@ -5,7 +5,7 @@ import shutil
 folder_path = r"..\labels"  
 save_folder_path = r"..\labels_update"  
 
-# 라벨 번호 
+# Label number
 # label_mapping = {'0': '9', '1':'3', '2':'5', '3':'0', '4':'1' }   #    ['box','hardhat', 'hook', 'scaffolds', 'worker'] 
 # 2 : hardhat , 4: box
 label_mapping = {'2': '3', '4':'9' }  
