@@ -11,8 +11,8 @@ import shutil
 # 3 : 5
 # 4 : 7
 # 5 : 8
-folder_path = "D:\scaffold_contil/test\labels/"  
-save_folder_path = "D:\scaffold_contil/test\dsds/"    
+folder_path = "../../test\labels/"  
+save_folder_path = "../../test\dsds/"    
 
 # label_mapping = {'2': '3', '3':'5', '4':'7', '5':'8'}
 label_mapping = {'2': '3', '3':'5', '4':'7','5':'8',}    
