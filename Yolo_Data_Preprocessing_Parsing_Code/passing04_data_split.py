@@ -1,4 +1,4 @@
-#%% Kütüphanelerin Yüklenmesi
+
 from IPython.display import Image  
 import os 
 import random
