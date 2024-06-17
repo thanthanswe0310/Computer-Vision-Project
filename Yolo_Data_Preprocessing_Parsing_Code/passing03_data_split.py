@@ -2,34 +2,34 @@ import os
 import random
 import shutil
 
-data_folder = "F:/total_dataset\data_20230918/thanthan\coco120\images/"  # 이미지 데이터셋이 있는 폴더 경로
-output_folder = "F:/total_dataset\data_20230918/thanthan/coco120/train/"  # 분할된 데이터셋을 저장할 폴더 경로
+data_folder = "..\..\coco120\images/"  # The path to the folder where the image dataset resides
+output_folder = "../../coco120/train/"  # The path to the folder where you want to store the segmented data set
 
-# 각 데이터셋의 비율 설정 (전체 데이터를 기준으로)
+# Set the percentage of each dataset (based on total data)
 train_ratio = 0.8
 val_ratio = 0.2
 # test_ratio = 0.1
 
 def split_dataset(data_folder, output_folder):
-    # 분할된 데이터셋 폴더 생성
+   # Creating a Split Dataset Folder
     os.makedirs(output_folder, exist_ok=True)
 
-    # 이미지 파일과 레이블 파일 리스트 생성
-    image_files = [filename for filename in os.listdir(data_folder) if filename.endswith('.jpg')]  # 이미지 파일 확장자에 맞게 수정
-    label_files = [filename for filename in os.listdir(data_folder) if filename.endswith('.txt')]  # 레이블 파일 확장자에 맞게 수정
+   # Create a list of image files and label files
+    image_files = [filename for filename in os.listdir(data_folder) if filename.endswith('.jpg')]  # Modify image file to fit the extension
+    label_files = [filename for filename in os.listdir(data_folder) if filename.endswith('.txt')] # Modify to fit label file extensions
 
-    # 데이터를 무작위로 섞음
+  # Mixing data at random
     random.shuffle(image_files)
 
-    # 분할할 인덱스 계산
+   # Index calculating index calculation
     total_samples = len(image_files)
     train_end = int(total_samples * train_ratio)
     val_end = train_end + int(total_samples * val_ratio)
 
-    # 각 데이터셋에 이미지와 레이블 파일 복사
+   # Copy images and label files to each dataset
     for i, filename in enumerate(image_files):
         source_image_path = os.path.join(data_folder, filename)
-        source_label_path = os.path.join(data_folder, filename.replace('.jpg', '.txt'))  # 이미지와 레이블 파일 이름 대응되도록 수정
+        source_label_path = os.path.join(data_folder, filename.replace('.jpg', '.txt'))# Modify image to correspond to label file name
         dest_folder = "train" if i < train_end else ("val" if i < val_end else "test")
         dest_image_path = os.path.join(output_folder, dest_folder, filename)
         dest_label_path = os.path.join(output_folder, dest_folder, filename.replace('.jpg', '.txt'))
